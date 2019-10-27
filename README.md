@@ -2,6 +2,11 @@
 
 A full-stack app allowing for human-friendly display of Github YAML files. Users can enter the blob URL for any YAML file on Github and have it decoded and displayed as a nested list of items.
 
+An example URL would be:
+`https://github.com/lightheadoc/tripleo/blob/master/net-config-noop.yaml`
+
+Only URLs to Github blobs are valid at this time.
+
 Made using [simple-react-full-stack](https://github.com/crsandeep/simple-react-full-stack).
 
 ## Getting started
