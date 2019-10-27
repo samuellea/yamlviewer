@@ -1,8 +1,83 @@
+@keyframes fade {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(50px);
+    opacity: 1;
+  }
+}
+
 h1 {
   color: green;
 }
 
 body {
-  text-align: center;
+  text-align: left;
   margin: auto;
+}
+
+input {
+  width: 750px;
+  border: 1px solid gray;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+button {
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: rgb(123, 208, 136);
+  border: none;
+  margin: 10px;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: rgb(61, 111, 75);
+}
+
+.input {
+  padding:10px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(lightgray, white);
+}
+
+.output {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 1% 5%;
+}
+
+.resultList {
+  animation: fade 500ms ease-in-out 0s both;
+}
+
+p {
+  font-weight: bold;
+  margin: 0px;
+  animation: fade 500ms ease-in-out 0s both;
+}
+
+.status {
+  color: darkred;
+  font-size: 24px;
+}
+
+.title {
+  color: darkgreen;
+  font-size: 48px;
+}
+
+.category {
+  font-weight: bold;
+  color: darkgreen;
 }

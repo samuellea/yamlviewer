@@ -1,22 +1,49 @@
 import React, { Component } from 'react';
 import './app.css';
-import ReactImage from './react.png';
+import * as api from './api';
+import Result from './Result';
 
 export default class App extends Component {
-  state = { username: null };
+  state = {
+    url: '',
+    result: null,
+    error: null,
+  };
 
-  componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
+  handleChange = (event) => {
+    const { value } = event.target;
+    this.setState({
+      url: value
+    })
+  }
+
+  handleClick = () => {
+    const { url } = this.state;
+    api.getGithubFile(url).then(res => {
+      this.setState({
+        result: res,
+        error: null
+      });
+    }).catch(err => {
+      this.setState({
+        error: err
+      });
+    })
   }
 
   render() {
-    const { username } = this.state;
+    const { result, error } = this.state;
     return (
-      <div>
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
+      <div className="App">
+        <div className="input">
+          <input type="text" placeholder="Enter the URL of a .YAML file from Github" onChange={this.handleChange} />
+          <button type="button" onClick={this.handleClick}>
+            Go
+            </button>
+        </div>
+        <div className="output">
+          <Result result={result} error={error} />
+        </div>
       </div>
     );
   }
